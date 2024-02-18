@@ -3,18 +3,17 @@ const subButton = document.getElementById('check-btn');
 const testResult = document.getElementById('result');
 
 function palCheck(string) {
-let cleanString = string.replace(/\s/g, '');
-let strNonAl = cleanString.replace(/[^a-zA-Z0-9]/g, '');
-let strFin = strNonAl.toUpperCase();
-
-let revStr = strFin.split("")
+let cleanString = string.replace(/\s/g, '')
+.replace(/[^a-zA-Z0-9]/g, '')
+.toUpperCase();
+let reverseString = cleanString.split("")
         .reverse()
         .join("");
 
 if(!string) {
    alert("Please input a value") 
 }
-else if (strFin === revStr){
+else if (cleanString === reverseString){
     testResult.innerText = `${string} is a palindrome`
 }
 else {
@@ -22,7 +21,5 @@ else {
 }
 
 }
-
-subButton.onclick = function () {
-    palCheck(textCheck.value)
-};
+subButton.addEventListener("click", () =>
+palCheck(textCheck.value))
